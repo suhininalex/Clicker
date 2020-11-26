@@ -4,26 +4,28 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class GameLoop {
-    private StatsPanel statsPanel;
-    private MinerCharacter miner;
+    private final StatsPanel statsPanel;
+    private Miner miner;
 
     private final Timer timer = new Timer();
 
-    public GameLoop(StatsPanel statsPanel, MinerCharacter miner) {
+    public GameLoop(StatsPanel statsPanel, Miner miner) {
         this.statsPanel = statsPanel;
         this.miner = miner;
     }
 
+
     private void update(){
-        miner.gold += miner.income * miner.incomeFrequency;
-        statsPanel.setGold(miner.gold);
-        statsPanel.setIncome(miner.income);
+        var gold = miner.gold + miner.income * miner.incomeFrequency;
+        miner = new Miner(Math.round(gold), miner.income, miner.incomeFrequency);
     }
 
     public void start(){
         TimerTask task = new TimerTask() {
             public void run() {
                 update();
+                statsPanel.setGold(miner.gold);
+                statsPanel.setIncome(miner.income);
             }
         };
         timer.scheduleAtFixedRate(task, 0, 200);
