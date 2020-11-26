@@ -17,19 +17,23 @@ public class StatsPanel {
         panel.setLayout(new GridLayout(12, 1));
         panel.add(goldLabel);
         panel.add(incomeLabel);
-        var upgrade = new FixedUpgrade();
-        JButton button = new JButton(upgrade.getDescription());
-        button.addActionListener(event -> SwingUtilities.invokeLater(() -> gameLoop.upgrade(upgrade)));
-        panel.add(button);
+        panel.add(createUpgradeButton(new FixedUpgrade()));
+        panel.add(createUpgradeButton(new MultiplierUpgrade()));
         return panel;
     }
 
-    public void setGold(long gold){
-        SwingUtilities.invokeLater(() -> goldLabel.setText("Gold: " + gold));
+    private JButton createUpgradeButton(Upgrade upgrade){
+        JButton button = new JButton(upgrade.getDescription());
+        button.addActionListener(event -> SwingUtilities.invokeLater(() -> gameLoop.upgrade(upgrade)));
+        return button;
     }
 
-    public void setIncome(long income){
-        incomeLabel.setText("Income: " + income);
+    public void setGold(double gold){
+        SwingUtilities.invokeLater(() -> goldLabel.setText("Gold: " + Math.round(gold)));
+    }
+
+    public void setIncome(double income){
+        incomeLabel.setText("Income: " + Math.round(income));
     }
 
     public JPanel getPanel() {
