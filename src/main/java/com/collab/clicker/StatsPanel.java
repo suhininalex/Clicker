@@ -16,11 +16,11 @@ public class StatsPanel {
         return panel;
     }
 
-    public void setGold(int gold){
+    public void setGold(long gold){
         SwingUtilities.invokeLater(() -> goldLabel.setText("Gold: " + gold));
     }
 
-    public void setIncome(int income){
+    public void setIncome(long income){
         incomeLabel.setText("Income: " + income);
     }
 
