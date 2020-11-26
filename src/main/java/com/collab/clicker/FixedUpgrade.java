@@ -12,7 +12,7 @@ public class FixedUpgrade implements Upgrade {
     }
 
     @Override
-    public long getPrice() {
+    public double getPrice() {
         return 10;
     }
 }
