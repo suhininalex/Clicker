@@ -1,9 +1,7 @@
 package com.collab.clicker;
 
 public class MinerCharacter {
-    long gold = 10l;
-    long income = 1l;
+    long gold = 10;
+    long income = 1;
     double incomeFrequency = 1;
-
-
 }
