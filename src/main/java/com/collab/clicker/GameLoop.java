@@ -31,6 +31,10 @@ public class GameLoop {
         timer.scheduleAtFixedRate(task, 0, 200);
     }
 
+    public void upgrade(Upgrade upgrade){
+        if (miner.gold >= upgrade.getPrice()) miner = upgrade.update(miner);
+    }
+
     public void stop(){
         timer.cancel();
     }

@@ -8,6 +8,7 @@ public class Launcher {
         var stats = new StatsPanel();
         var miner = new Miner(1, 1, 1);
         var updater = new GameLoop(stats, miner);
+        stats.gameLoop = updater;
         window.setSize(800, 600);
         window.add(stats.getPanel());
         window.setLocationRelativeTo(null);
