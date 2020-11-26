@@ -16,8 +16,7 @@ public class GameLoop {
 
 
     private void update(){
-        var gold = miner.gold + miner.income * miner.incomeFrequency;
-        miner = new Miner(Math.round(gold), miner.income, miner.incomeFrequency);
+        miner.gold += miner.gold + miner.income * miner.incomeFrequency;
     }
 
     public void start(){
@@ -32,7 +31,10 @@ public class GameLoop {
     }
 
     public void upgrade(Upgrade upgrade){
-        if (miner.gold >= upgrade.getPrice()) miner = upgrade.update(miner);
+        if (miner.gold >= upgrade.getPrice()) {
+            miner.gold -= miner.gold;
+            upgrade.update(miner);
+        }
     }
 
     public void stop(){

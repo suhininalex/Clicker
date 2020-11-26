@@ -2,8 +2,8 @@ package com.collab.clicker;
 
 public class MultiplierUpgrade implements Upgrade {
     @Override
-    public Miner update(Miner miner) {
-        return new Miner(miner.gold - getPrice(), miner.income * 1.01, miner.incomeFrequency);
+    public void update(Miner miner) {
+        miner.income = miner.income * 1.01;
     }
 
     @Override

@@ -6,7 +6,7 @@ public class Launcher {
     public static void main(String[] args) {
         var window = new JFrame("Clicker");
         var stats = new StatsPanel();
-        var miner = new Miner(1, 1, 1);
+        var miner = new Miner();
         var updater = new GameLoop(stats, miner);
         stats.gameLoop = updater;
         window.setSize(800, 600);
