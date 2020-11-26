@@ -5,7 +5,7 @@ import java.util.TimerTask;
 
 public class GameLoop {
     private final StatsPanel statsPanel;
-    private Miner miner;
+    private final Miner miner;
 
     private final Timer timer = new Timer();
 
@@ -16,7 +16,7 @@ public class GameLoop {
 
 
     private void update(){
-        miner.gold += miner.gold + miner.income * miner.incomeFrequency;
+        miner.gold += miner.income * miner.incomeFrequency;
     }
 
     public void start(){
@@ -32,7 +32,7 @@ public class GameLoop {
 
     public void upgrade(Upgrade upgrade){
         if (miner.gold >= upgrade.getPrice()) {
-            miner.gold -= miner.gold;
+            miner.gold -= upgrade.getPrice();
             upgrade.update(miner);
         }
     }

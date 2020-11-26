@@ -18,7 +18,7 @@ public class StatsPanel {
         panel.add(goldLabel);
         panel.add(incomeLabel);
         panel.add(createUpgradeButton(new FixedUpgrade()));
-        panel.add(createUpgradeButton(new MultiplierUpgrade()));
+        panel.add(createUpgradeButton(new MultiplierUpgrade(100, 0.01)));
         return panel;
     }
 
